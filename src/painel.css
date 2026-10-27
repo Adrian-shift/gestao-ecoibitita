@@ -1,0 +1,33 @@
+.pn-app { display: flex; min-height: 100vh; background: #f7f9f9; font-size: 16px; }
+
+.pn-sidebar { width: 272px; flex: 0 0 272px; background: #000; color: #fff; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.pn-brand { padding: 28px 24px; border-bottom: 1px solid #1d2a25; }
+.pn-brand img { display: block; width: 100%; max-width: 220px; height: auto; }
+
+.pn-nav { flex: 1; padding: 20px 16px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; }
+.pn-nav-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px; color: #fff; text-decoration: none; font-size: 16px; line-height: 1.3; }
+.pn-nav-item:hover { background: #12201b; }
+.pn-nav-item.ativo { background: var(--green); }
+
+.pn-user { display: flex; align-items: center; gap: 12px; padding: 18px 16px; border-top: 1px solid #1d2a25; }
+.pn-avatar { width: 42px; height: 42px; flex: 0 0 42px; border-radius: 50%; background: var(--green); display: grid; place-items: center; font-weight: 700; font-size: 17px; }
+.pn-user-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pn-user-text strong { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pn-user-text small { font-size: 14px; color: #a9b5af; }
+.pn-sair { border: 0; background: transparent; color: #a9b5af; padding: 8px; border-radius: 8px; display: grid; place-items: center; cursor: pointer; }
+.pn-sair:hover { background: #12201b; color: #fff; }
+
+.pn-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pn-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 32px; background: #fff; border-bottom: 1px solid #e5eaec; }
+.pn-header h1 { margin: 0; font-size: 28px; font-weight: 700; color: #1d2421; }
+.pn-header p { margin: 6px 0 0; font-size: 16px; color: var(--green); }
+.pn-sino { position: relative; width: 46px; height: 46px; border-radius: 50%; border: 1px solid #e0e6e8; background: #fff; color: var(--green); display: grid; place-items: center; cursor: pointer; }
+.pn-sino-ponto { position: absolute; top: 9px; right: 11px; width: 9px; height: 9px; border-radius: 50%; background: #e5304d; }
+
+.pn-content { flex: 1; padding: 32px; }
+.pn-vazio { max-width: 560px; }
+.pn-vazio h2 { margin: 0 0 8px; font-size: 22px; }
+.pn-vazio p { margin: 0; font-size: 16px; color: #4a5650; }
+.pn-carregando { padding: 48px; text-align: center; font-size: 16px; color: #4a5650; }
+
+.notice.erro { color: #b3261e; }
