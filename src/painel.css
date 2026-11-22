@@ -75,3 +75,32 @@
 .pn-paginacao div { display: flex; gap: 8px; }
 .pn-paginacao button { height: 40px; padding: 0 16px; border: 1px solid #d5dde0; border-radius: 8px; background: #fff; font: inherit; font-size: 15px; cursor: pointer; }
 .pn-paginacao button:disabled { opacity: .5; cursor: not-allowed; }
+
+.pn-botao:disabled { opacity: .6; cursor: not-allowed; }
+.pn-botao-novo { white-space: nowrap; }
+.pn-link { border: 0; background: none; padding: 6px 4px; color: #0b8f63; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+.pn-link:hover { text-decoration: underline; }
+.pn-sucesso { margin: 0 24px 16px; padding: 14px 16px; border-radius: 8px; background: #dcf5e9; color: #0f7a46; font-size: 15px; font-weight: 600; }
+
+.pn-overlay { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .55); display: grid; place-items: center; padding: 20px; overflow-y: auto; }
+.pn-modal { width: 100%; max-width: 520px; background: #fff; border-radius: 14px; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+.pn-modal-topo { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px 8px; }
+.pn-modal-topo h2 { margin: 0; font-size: 22px; color: #1d2421; }
+.pn-modal-fechar { border: 0; background: transparent; padding: 8px; border-radius: 8px; color: #5b6862; cursor: pointer; display: grid; place-items: center; }
+.pn-modal-fechar:hover { background: #eef1f2; }
+.pn-modal-form { padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.pn-campo { display: flex; flex-direction: column; gap: 6px; }
+.pn-campo label { font-size: 15px; font-weight: 600; color: #1d2421; }
+.pn-campo label span { color: #c62828; }
+.pn-campo input, .pn-campo select { width: 100%; box-sizing: border-box; height: 48px; padding: 0 14px; border: 1px solid #d5dde0; border-radius: 8px; background: #fff; color: #1d2421; font: inherit; font-size: 16px; }
+.pn-campo input:focus, .pn-campo select:focus { outline: 2px solid var(--green); outline-offset: 0; }
+.pn-campo input:read-only, .pn-campo select:disabled { background: #f3f5f5; color: #5b6862; }
+.pn-campo small { font-size: 14px; color: #5b6862; }
+.pn-senha { position: relative; }
+.pn-senha input { padding-right: 48px; }
+.pn-senha button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; padding: 8px; color: #5b6862; cursor: pointer; display: grid; place-items: center; }
+
+.pn-erro-form { margin: 0; padding: 12px 14px; border-radius: 8px; background: #fdeeed; color: #b3261e; font-size: 15px; }
+.pn-modal-acoes { display: flex; justify-content: flex-end; gap: 12px; margin-top: 4px; }
+.pn-modal-acoes .pn-botao-claro { height: 46px; }

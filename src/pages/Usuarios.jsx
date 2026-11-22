@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import UsuarioModal from "../components/UsuarioModal";
+import { useAuth } from "../context/AuthContext";
 import { listarUsuarios, resumoAdmin } from "../services/api";
 import { corDoAvatar, formatarUltimoAcesso } from "../utils/formatar";
 
@@ -18,6 +20,7 @@ function CartaoNumero({ titulo, valor, detalhe, verde }) {
 }
 
 export default function Usuarios() {
+  const { usuario: eu } = useAuth();
   const [resumo, setResumo] = useState(null);
   const [form, setForm] = useState(SEM_FILTROS);       // o que está digitado
   const [filtros, setFiltros] = useState(SEM_FILTROS); // o que foi aplicado com "Buscar"
@@ -26,10 +29,16 @@ export default function Usuarios() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState("");
   const [tentativa, setTentativa] = useState(0);
+  const [modal, setModal] = useState(null); // null | { usuario: null } (novo) | { usuario } (editar)
+  const [aviso, setAviso] = useState("");
 
-  useEffect(() => {
+  const carregarResumo = useCallback(() => {
     resumoAdmin().then(setResumo).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    carregarResumo();
+  }, [carregarResumo]);
 
   useEffect(() => {
     let cancelado = false;
@@ -44,6 +53,12 @@ export default function Usuarios() {
     };
   }, [filtros, pagina, tentativa]);
 
+  useEffect(() => {
+    if (!aviso) return;
+    const timer = setTimeout(() => setAviso(""), 5000);
+    return () => clearTimeout(timer);
+  }, [aviso]);
+
   function buscar(event) {
     event.preventDefault();
     setPagina(0);
@@ -52,6 +67,13 @@ export default function Usuarios() {
 
   function alterar(campo) {
     return (event) => setForm((atual) => ({ ...atual, [campo]: event.target.value }));
+  }
+
+  function aoSalvar(resposta, editou) {
+    setModal(null);
+    setAviso(editou ? "Usuário atualizado com sucesso." : `Usuário ${resposta.nome} criado com sucesso.`);
+    carregarResumo();
+    setTentativa((n) => n + 1);
   }
 
   const itens = dados?.itens ?? [];
@@ -103,7 +125,12 @@ export default function Usuarios() {
             <option value="false">Inativo</option>
           </select>
           <button type="submit" className="pn-botao">Buscar</button>
+          <button type="button" className="pn-botao pn-botao-novo" onClick={() => setModal({ usuario: null })}>
+            + Novo usuário
+          </button>
         </form>
+
+        {aviso && <div className="pn-sucesso" role="status">{aviso}</div>}
 
         {erro && (
           <div className="pn-erro">
@@ -123,6 +150,7 @@ export default function Usuarios() {
                 <th>Perfil</th>
                 <th>Status</th>
                 <th>Último acesso</th>
+                <th>Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -148,6 +176,11 @@ export default function Usuarios() {
                     </span>
                   </td>
                   <td>{formatarUltimoAcesso(u.ultimoAcesso)}</td>
+                  <td>
+                    <button type="button" className="pn-link" onClick={() => setModal({ usuario: u })}>
+                      Editar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -175,6 +208,15 @@ export default function Usuarios() {
           </div>
         )}
       </section>
+
+      {modal && (
+        <UsuarioModal
+          usuario={modal.usuario}
+          idLogado={eu.id}
+          aoSalvar={aoSalvar}
+          aoFechar={() => setModal(null)}
+        />
+      )}
     </>
   );
 }

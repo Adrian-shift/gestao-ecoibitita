@@ -70,3 +70,11 @@ export function listarUsuarios({ busca = "", perfil = "", ativo = "", pagina = 0
   if (ativo !== "") params.set("ativo", ativo);
   return requisicao(`/api/admin/usuarios?${params}`);
 }
+
+export function criarUsuario(dados) {
+  return requisicao("/api/admin/usuarios", { method: "POST", body: JSON.stringify(dados) });
+}
+
+export function editarUsuario(id, dados) {
+  return requisicao(`/api/admin/usuarios/${id}`, { method: "PUT", body: JSON.stringify(dados) });
+}
