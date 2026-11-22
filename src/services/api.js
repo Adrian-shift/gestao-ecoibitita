@@ -78,3 +78,15 @@ export function criarUsuario(dados) {
 export function editarUsuario(id, dados) {
   return requisicao(`/api/admin/usuarios/${id}`, { method: "PUT", body: JSON.stringify(dados) });
 }
+
+function consulta(filtros = {}) {
+  const params = new URLSearchParams();
+  if (filtros.status) params.set("status", filtros.status);
+  if (filtros.bairro) params.set("bairro", filtros.bairro);
+  return params.toString() ? `?${params}` : "";
+}
+
+export const resumoDashboard = () => requisicao("/api/gestao/dashboard/resumo");
+export const bairrosDashboard = () => requisicao("/api/gestao/dashboard/bairros");
+export const denunciasDashboard = (f) => requisicao(`/api/gestao/dashboard/denuncias${consulta(f)}`);
+export const mapaDashboard = (f) => requisicao(`/api/gestao/dashboard/mapa${consulta(f)}`);
