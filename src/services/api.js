@@ -58,3 +58,15 @@ export function login(email, senha) {
 export function buscarMe() {
   return requisicao("/api/gestao/me");
 }
+
+export function resumoAdmin() {
+  return requisicao("/api/admin/resumo");
+}
+
+export function listarUsuarios({ busca = "", perfil = "", ativo = "", pagina = 0, tamanho = 10 } = {}) {
+  const params = new URLSearchParams({ pagina, tamanho });
+  if (busca.trim()) params.set("busca", busca.trim());
+  if (perfil) params.set("perfil", perfil);
+  if (ativo !== "") params.set("ativo", ativo);
+  return requisicao(`/api/admin/usuarios?${params}`);
+}

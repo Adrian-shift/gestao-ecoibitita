@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import EmConstrucao from "./pages/EmConstrucao";
 import "./App.css";
 import "./painel.css";
+import Usuarios from "./pages/Usuarios";
 
 // a tela de login mantém o fundo e o logo do Figma
 function PaginaLogin() {
@@ -42,7 +43,7 @@ export default function App() {
           <Route element={<RotaProtegida />}>
             <Route element={<PainelLayout />}>
               <Route element={<RotaProtegida perfis={["Administrador"]} />}>
-                <Route path="/usuarios" element={<EmConstrucao />} />
+                <Route path="/usuarios" element={<Usuarios />} />
               </Route>
               <Route element={<RotaProtegida perfis={["Fiscal"]} />}>
                 <Route path="/dashboard" element={<EmConstrucao />} />
