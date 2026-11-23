@@ -137,3 +137,52 @@
 a.pn-link { text-decoration: none; }
 a.pn-link:hover { text-decoration: underline; }
 .pn-link-neutro { color: #5b6862; }
+
+
+
+
+
+
+
+/* ---------- Gerenciar Denúncias (fiscal) ---------- */
+.pn-kpi-detalhe.azul { color: #1b5fb5; font-weight: 600; }
+.pn-kpi-valor.texto { font-size: 22px; line-height: 1.5; }
+
+.pn-local { display: flex; flex-direction: column; gap: 2px; }
+.pn-local small { font-size: 13px; color: #5b6862; }
+
+.pn-paginacao button.ativo { background: #0b8f63; border-color: #0b8f63; color: #fff; font-weight: 600; }
+
+.pn-modal-largo { max-width: 760px; }
+.pn-modal-titulo { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pn-modal-corpo { padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 22px; }
+.pn-modal-corpo .pn-sucesso { margin: 0; }
+
+.pn-secao h3, .pn-acao-status h3 { margin: 0 0 10px; font-size: 17px; color: #1d2421; }
+.pn-texto-suave { margin: 0; font-size: 15px; color: #5b6862; }
+.pn-descricao { margin: 12px 0 0; font-size: 16px; line-height: 1.5; color: #1d2421; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.pn-foto-principal { display: block; width: 100%; max-height: 380px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: #eef1ef; }
+.pn-miniaturas { display: flex; gap: 8px; margin-top: 10px; }
+.pn-miniaturas button { width: 64px; height: 64px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: none; cursor: pointer; }
+.pn-miniaturas button.ativo { border-color: var(--green); }
+.pn-miniaturas img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.pn-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px 20px; }
+.pn-info div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pn-info small { font-size: 14px; color: #5b6862; }
+.pn-info strong { font-size: 16px; color: #1d2421; overflow-wrap: anywhere; }
+.pn-info .pn-link { align-self: flex-start; padding-left: 0; text-decoration: none; }
+
+.pn-historico { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.pn-historico li { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 0 0 16px 22px; border-left: 2px solid #dfe6e2; margin-left: 6px; }
+.pn-historico li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.pn-historico li::before { content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #0b8f63; }
+.pn-historico strong { font-size: 16px; color: #1d2421; }
+.pn-historico span { font-size: 15px; color: #1d2421; overflow-wrap: anywhere; }
+.pn-historico small { font-size: 14px; color: #5b6862; }
+
+.pn-acao-status { display: flex; flex-direction: column; gap: 16px; padding-top: 22px; border-top: 1px solid #e5eaec; }
+.pn-acao-status h3 { margin: 0; }
+.pn-campo textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid #d5dde0; border-radius: 8px; background: #fff; color: #1d2421; font: inherit; font-size: 16px; resize: vertical; }
+.pn-campo textarea:focus { outline: 2px solid var(--green); outline-offset: 0; }

@@ -22,3 +22,14 @@ export function corDoAvatar(nome) {
   for (const letra of nome) soma += letra.charCodeAt(0);
   return CORES[soma % CORES.length];
 }
+
+
+export const formatarData = (iso) => new Date(iso).toLocaleDateString("pt-BR");
+
+// "29/07/2026 às 08:42"
+export function formatarDataHora(iso) {
+  if (!iso) return "";
+  const data = new Date(iso);
+  const horario = data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  return `${data.toLocaleDateString("pt-BR")} às ${horario}`;
+}

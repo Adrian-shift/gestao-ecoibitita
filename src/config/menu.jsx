@@ -22,7 +22,7 @@ export const TITULOS = {
     subtitulo: "Acompanhamento de limpeza urbana em Ibititá-BA",
   },
   "/mapa": { titulo: "Mapa Georreferenciado", subtitulo: "" },
-  "/denuncias": { titulo: "Gerenciar Denúncias", subtitulo: "" },
+  "/denuncias": { titulo: "Gerenciar Denúncias", subtitulo: "Acompanhe todas as ações realizadas nas denúncias" },
   "/relatorios": { titulo: "Relatórios", subtitulo: "" },
 };
 

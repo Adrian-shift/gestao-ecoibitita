@@ -90,3 +90,19 @@ export const resumoDashboard = () => requisicao("/api/gestao/dashboard/resumo");
 export const bairrosDashboard = () => requisicao("/api/gestao/dashboard/bairros");
 export const denunciasDashboard = (f) => requisicao(`/api/gestao/dashboard/denuncias${consulta(f)}`);
 export const mapaDashboard = (f) => requisicao(`/api/gestao/dashboard/mapa${consulta(f)}`);
+
+function consultaDenuncias({ busca = "", status = "", categoriaId = "", bairro = "", pagina = 0, tamanho = 10 } = {}) {
+  const params = new URLSearchParams({ pagina, tamanho });
+  if (busca.trim()) params.set("busca", busca.trim());
+  if (status) params.set("status", status);
+  if (categoriaId) params.set("categoriaId", categoriaId);
+  if (bairro) params.set("bairro", bairro);
+  return params.toString();
+}
+
+export const resumoDenuncias = () => requisicao("/api/gestao/denuncias/resumo");
+export const listarDenuncias = (filtros) => requisicao(`/api/gestao/denuncias?${consultaDenuncias(filtros)}`);
+export const detalheDenuncia = (id) => requisicao(`/api/gestao/denuncias/${id}`);
+export const alterarStatusDenuncia = (id, dados) =>
+  requisicao(`/api/gestao/denuncias/${id}/status`, { method: "PATCH", body: JSON.stringify(dados) });
+export const listarCategorias = () => requisicao("/api/categorias");

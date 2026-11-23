@@ -9,6 +9,7 @@ import "./App.css";
 import "./painel.css";
 import Usuarios from "./pages/Usuarios";
 import Dashboard from "./pages/Dashboard";
+import Denuncias from "./pages/Denuncias";
 
 // a tela de login mantém o fundo e o logo do Figma
 function PaginaLogin() {
@@ -49,7 +50,7 @@ export default function App() {
               <Route element={<RotaProtegida perfis={["Fiscal"]} />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/mapa" element={<EmConstrucao />} />
-                <Route path="/denuncias" element={<EmConstrucao />} />
+                <Route path="/denuncias" element={<Denuncias />} />
                 <Route path="/relatorios" element={<EmConstrucao />} />
               </Route>
             </Route>
